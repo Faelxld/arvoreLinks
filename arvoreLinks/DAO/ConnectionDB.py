@@ -58,7 +58,7 @@ class ConnectionDB(object):
         return (result[0])
 
     def selectSolr(self):
-        results = self.solr.search('lido:false',rows=1000)
+        results = self.solr.search('lido:false',rows=50000)
         return list(results)
 
     def selectSolrId(self,Id):
