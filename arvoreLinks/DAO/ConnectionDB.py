@@ -12,17 +12,12 @@ class ConnectionDB(object):
       self.connection = self.getConnection()
       self.solr = pysolr.Solr('http://servermon.ddns.net:8983/solr/links/', timeout=10)
 
-
-
-
-
-
     def getConnection(self):
         try:
             connection = pymysql.connect(host='sisiclipping.c9iphzxvhtzw.sa-east-1.rds.amazonaws.com',
                                          user='admin',
                                          password='admdata2708',
-                                         db='iclipping',
+                                         db='iclippingv2',
                                          port=3306)
             print(connection)
             return connection
@@ -73,4 +68,4 @@ class ConnectionDB(object):
 
 
     def updateLido(self,doc):
-        self.solr.add([doc])
+        self.solr.add([doc],fieldUpdates={'lido':'set'})
